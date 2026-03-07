@@ -118,7 +118,6 @@ const TripSummary = () => {
           travelers: currentTrip.travelers || 1, // Fallback
           budget: currentTrip.budget || 0,
           totalSpent: totalSpent,
-          totalSpent: totalSpent,
           remaining: (currentTrip.budget || 0) - totalSpent,
           travelBudget: currentTrip.travelBudget || 0,
           hotelBudget: currentTrip.hotelBudget || 0,
