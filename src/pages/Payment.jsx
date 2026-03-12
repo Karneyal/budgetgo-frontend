@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FiCreditCard, FiLock, FiCheck, FiDollarSign } from 'react-icons/fi'
 import { formatINR } from '../utils/currency'
+import { API_BASE_URL } from '../config/api'
 import './Payment.css'
 
 const Payment = () => {
@@ -76,7 +77,7 @@ const Payment = () => {
       // BUT createPayment also saves the payment as 'Pending'.
 
       // Let's create a Pending payment to get the Order ID
-      const initPaymentRes = await fetch('http://34.236.69.12:8081/api/payments', {
+      const initPaymentRes = await fetch(`${API_BASE_URL}/api/payments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -104,7 +105,7 @@ const Payment = () => {
         order_id: initPaymentData.orderId,
         handler: async function (response) {
           // 2. Verify Payment on Backend
-          const verifyRes = await fetch(`http://34.236.69.12:8081/api/payments/${initPaymentData.id}`, {
+          const verifyRes = await fetch(`${API_BASE_URL}/api/payments/${initPaymentData.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

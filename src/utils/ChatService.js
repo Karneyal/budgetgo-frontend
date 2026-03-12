@@ -1,5 +1,6 @@
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import { api, API_BASE_URL } from './api';
 
 class ChatService {
     constructor() {
@@ -13,7 +14,7 @@ class ChatService {
         this.callbacks.push(onMessageReceived); // Simple callback management
 
         this.client = new Client({
-           webSocketFactory: () => new SockJS('http://34.236.69.12:8081/ws'), // Adjust URL as needed
+           webSocketFactory: () => new SockJS(`${API_BASE_URL}/ws`), // Adjust URL as needed
             connectHeaders: {
                 Authorization: `Bearer ${token}`
             },
