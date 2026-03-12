@@ -114,7 +114,7 @@ const Login = () => {
               <button
                 type="button"
                 className="btn btn-google btn-full"
-                onClick={() => window.location.href = 'http://34.236.69.12:8081/oauth2/authorization/google'}
+                onClick={() => window.location.href = 'https://hvr7ssnubd.us-east-1.awsapprunner.com/oauth2/authorization/google'}
                 style={{
                   backgroundColor: '#fff',
                   color: '#757575',
