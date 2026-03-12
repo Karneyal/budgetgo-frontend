@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = 'http://34.236.69.12:8081'
+export const API_BASE_URL = 'http://44.218.60.233:8081'
 
 export const api = {
   baseURL: API_BASE_URL,
