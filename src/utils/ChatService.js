@@ -1,6 +1,6 @@
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import { api, API_BASE_URL } from './api';
+import { api, API_BASE_URL } from '../config/api';
 
 class ChatService {
     constructor() {
