@@ -8,7 +8,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:4001',
+        target: 'https://hvr7ssnubd.us-east-1.awsapprunner.com',
         changeOrigin: true,
         secure: false,
         configure: (proxy, _options) => {

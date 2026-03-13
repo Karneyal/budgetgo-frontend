@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = 'http://44.218.60.233:8081'
+export const API_BASE_URL = 'https://hvr7ssnubd.us-east-1.awsapprunner.com/api'
 
 export const api = {
   baseURL: API_BASE_URL,
@@ -7,7 +7,7 @@ export const api = {
   // Auth endpoints
   login: `${API_BASE_URL}/login`,
   register: `${API_BASE_URL}/register`,
-  sendOtp: `${API_BASE_URL}/auth/send-otp`,
+  sendOtp: `${API_BASE_URL}/send-otp`,
 
   // Helper function to make API calls
   async request(endpoint, options = {}) {
