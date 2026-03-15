@@ -653,17 +653,19 @@ input[type="number"] {
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
-    .recommendations-container {
-      grid-template-columns: 1fr;
-    }
+}
 
-    .recommendations-sidebar {
-      position: static;
-      margin-bottom: 2rem;
-    }
-
-    .search-filters {
-      position: static;
-    }
+@media (max-width: 1024px) {
+  .recommendations-container {
+    grid-template-columns: 1fr;
   }
+
+  .recommendations-sidebar {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .search-filters {
+    position: static;
+  }
+}
