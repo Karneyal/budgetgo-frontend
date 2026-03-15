@@ -360,8 +360,8 @@ const Itinerary = () => {
                     className="btn btn-primary btn-sm"
                     onClick={async () => {
                       try {
-                        const isFlight = option.name.toLowerCase().includes('flight') || option.class.includes('Economy');
-                        const type = isFlight ? 'Flight' : (option.name.toLowerCase().includes('bus') ? 'Bus' : 'Train');
+                        const isFlight = (option.name || '').toLowerCase().includes('flight') || (option.class || '').includes('Economy');
+                        const type = isFlight ? 'Flight' : ((option.name || '').toLowerCase().includes('bus') ? 'Bus' : 'Train');
 
                         await api.post('/bookings', {
                           type: 'Transportation',
@@ -634,7 +634,7 @@ const Itinerary = () => {
                       >
                         Report Delay
                       </button>
-                      {(item.title.toLowerCase().includes('check-in') || item.title.toLowerCase().includes('hotel')) && (
+                      {((item.title || '').toLowerCase().includes('check-in') || (item.title || '').toLowerCase().includes('hotel')) && (
                         <button
                           className="btn btn-primary btn-sm"
                           onClick={() => navigate('/booking', {

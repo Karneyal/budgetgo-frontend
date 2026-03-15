@@ -105,8 +105,8 @@ const NearbyLocations = () => {
 
   const getFilteredPlaces = () => {
     let filtered = allPlaces.filter(place => {
-      const matchesSearch = place.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        place.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      const matchesSearch = (place.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (place.location || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
         (place.cuisine && place.cuisine.toLowerCase().includes(searchQuery.toLowerCase()))
       const matchesCategory = category === 'all' || place.category === category
       const matchesRating = place.rating >= minRating

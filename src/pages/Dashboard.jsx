@@ -298,8 +298,8 @@ const Dashboard = () => {
                   <p className="trip-date">{trip.date}</p>
                 </div>
                 <div className="trip-meta">
-                  <span className={`status-badge status-${trip.status.toLowerCase()}`}>
-                    {trip.status}
+                  <span className={`status-badge status-${(trip.status || 'planning').toLowerCase()}`}>
+                    {trip.status || 'Planning'}
                   </span>
                   <span className="trip-budget">{trip.budget}</span>
                   <button

@@ -166,10 +166,10 @@ const Booking = () => {
   ]
 
   const filteredBookings = bookings.filter(booking => {
-    const matchesSearch = booking.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      booking.location.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesFilter = filter === 'all' || booking.status.toLowerCase() === filter.toLowerCase()
-    const matchesType = bookingType === 'all' || booking.type.toLowerCase() === bookingType.toLowerCase()
+    const matchesSearch = (booking.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (booking.location || '').toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesFilter = filter === 'all' || (booking.status || '').toLowerCase() === filter.toLowerCase()
+    const matchesType = bookingType === 'all' || (booking.type || '').toLowerCase() === bookingType.toLowerCase()
     const matchesBudget = !budgetFilter || booking.price <= parseFloat(budgetFilter)
     return matchesSearch && matchesFilter && matchesType && matchesBudget
   })
@@ -578,8 +578,8 @@ const Booking = () => {
               </div>
             </div>
             <div className="booking-footer">
-              <span className={`status-badge status-${booking.status.toLowerCase()}`}>
-                <FiCheck /> {booking.status}
+              <span className={`status-badge status-${(booking.status || 'pending').toLowerCase()}`}>
+                <FiCheck /> {booking.status || 'Pending'}
               </span>
               <button className="btn btn-primary btn-sm">View Details</button>
             </div>
