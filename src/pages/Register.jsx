@@ -71,13 +71,11 @@ const Register = () => {
       return
     }
 
-    // OTP Validation Removed
-    /*
+    // OTP Validation Enforced for normal flow
     if (!invitationToken && !formData.otp) {
       setError('Please verify your email with OTP')
       return
     }
-    */
 
     setLoading(true)
 
@@ -169,18 +167,20 @@ const Register = () => {
               )}
             </div>
 
-            <div className="input-group">
-              <label htmlFor="otp">OTP</label>
-              <input
-                type="text"
-                id="otp"
-                name="otp"
-                value={formData.otp || ''}
-                onChange={handleChange}
-                placeholder="Enter 6-digit OTP"
-                maxLength={6}
-              />
-            </div>
+            {!invitationToken && (
+              <div className="input-group">
+                <label htmlFor="otp">OTP</label>
+                <input
+                  type="text"
+                  id="otp"
+                  name="otp"
+                  value={formData.otp || ''}
+                  onChange={handleChange}
+                  placeholder="Enter 6-digit OTP"
+                  maxLength={6}
+                />
+              </div>
+            )}
 
             <div className="input-group">
               <label htmlFor="password">Password</label>
