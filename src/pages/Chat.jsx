@@ -94,6 +94,23 @@ const Chat = () => {
       if (result.success || result.id) {
         return { success: true };
       } else {
+        if (result.error && (result.error.toLowerCase().includes('not found') || result.error.toLowerCase().includes('must register'))) {
+          // Fallback to email invitation
+          try {
+            const invResult = await api.post('/invitations/send', {
+              tripId: parseInt(tripId),
+              invitedBy: user.id,
+              email: emailToAdd.trim()
+            });
+            
+            if (invResult.success) {
+              return { success: true };
+            }
+            return { success: false, error: invResult.error || 'Failed to send invitation' };
+          } catch (e) {
+            return { success: false, error: 'Failed to send invitation' };
+          }
+        }
         return { success: false, error: result.error || 'Failed to add member' };
       }
     } catch (err) {

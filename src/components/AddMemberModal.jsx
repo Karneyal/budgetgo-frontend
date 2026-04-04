@@ -35,13 +35,8 @@ const AddMemberModal = ({ isOpen, onClose, onAddMember, isLoading }) => {
                 onClose();
             } else {
                 // Failure: Show error from backend (or default)
-                // If backend says user not found, we show "Please check your email ID" as requested
                 const errorMsg = result?.error || 'Failed to add member';
-                if (errorMsg.toLowerCase().includes('not found') || errorMsg.toLowerCase().includes('exist')) {
-                    setError('Please check your email ID');
-                } else {
-                    setError(errorMsg);
-                }
+                setError(errorMsg);
             }
         } catch (err) {
             setError('An unexpected error occurred');

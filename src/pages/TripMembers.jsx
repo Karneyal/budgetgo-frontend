@@ -63,22 +63,43 @@ const TripMembers = () => {
 
   const handleAddMember = async (emailToAdd) => {
     try {
-      // Direct add endpoint
       const result = await api.post('/trip-members/add', {
         tripId: parseInt(tripId),
         email: emailToAdd
       })
 
-      // Check for success (api wrapper structure dependent, assuming standard)
       if (result.success || result.id) {
         setSuccess(`Member added successfully: ${emailToAdd}`)
         setShowAddMemberModal(false)
         loadMembers()
+        return { success: true }
       } else {
+        if (result.error && (result.error.toLowerCase().includes('not found') || result.error.toLowerCase().includes('must register'))) {
+          // User not found, automatically send an invitation email instead
+          try {
+            const invResult = await api.post('/invitations/send', {
+              tripId: parseInt(tripId),
+              invitedBy: user.id,
+              email: emailToAdd.trim()
+            });
+            
+            if (invResult.success) {
+              setSuccess(`User not registered. Invitation link sent successfully to ${emailToAdd}`);
+              setShowAddMemberModal(false);
+              loadInvitations();
+              return { success: true };
+            }
+            return { success: false, error: invResult.error || 'Failed to send invitation' };
+          } catch (e) {
+            return { success: false, error: 'Failed to send invitation' };
+          }
+        }
         setError(result.error || 'Failed to add member')
+        return { success: false, error: result.error || 'Failed to add member' }
       }
     } catch (err) {
-      setError('Failed to add member. Please check if the email exists.')
+      setError('Failed to process member addition.')
+      return { success: false, error: 'Failed to process member addition' }
     }
   }
 

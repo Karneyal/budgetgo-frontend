@@ -115,11 +115,15 @@ The BudgetGo application now has a complete invitation system that allows users 
 
 ## Email Service
 
-Currently, the email service logs emails to console (for development).
+Currently, the email service runs in **mock mode by default** (for development). In mock mode:
+- Emails are **not sent over SMTP**
+- The latest generated email (OTP, invitation, etc.) is stored in memory
+- You can fetch it via: `GET /api/dev/emails/latest`
+
 To enable real emails in production:
-1. Add email service dependency (JavaMailSender or SendGrid)
-2. Update `EmailService.java` to send actual emails
-3. Configure SMTP settings in `application.properties`
+1. Set `app.email.mock=false` in `application.properties`
+2. Make sure SMTP settings are correct (Gmail App Password or a real SMTP provider)
+3. Update `EmailService.java` if you want custom templates or providers
 
 ## Testing
 
