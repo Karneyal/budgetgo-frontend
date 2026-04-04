@@ -46,9 +46,9 @@ const AddMemberModal = ({ isOpen, onClose, onAddMember, isLoading }) => {
     };
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <div className="modal-header">
+        <div className="add-member-overlay">
+            <div className="add-member-content">
+                <div className="add-member-header">
                     <h2><FiUserPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Add Trip Member</h2>
                     <button onClick={onClose} className="close-btn">
                         <FiX size={24} />
@@ -56,7 +56,7 @@ const AddMemberModal = ({ isOpen, onClose, onAddMember, isLoading }) => {
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="modal-body">
+                    <div className="add-member-body">
                         <div className="input-group">
                             <label htmlFor="email">Member Email</label>
                             <input
@@ -75,7 +75,7 @@ const AddMemberModal = ({ isOpen, onClose, onAddMember, isLoading }) => {
                         </div>
                     </div>
 
-                    <div className="modal-footer">
+                    <div className="add-member-footer">
                         <button
                             type="button"
                             onClick={onClose}

@@ -1,4 +1,4 @@
-.modal-overlay {
+.add-member-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -13,7 +13,7 @@
     padding: 1rem;
 }
 
-.modal-content {
+.add-member-content {
     background: white;
     border-radius: var(--radius-lg);
     width: 100%;
@@ -23,7 +23,7 @@
     animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-header {
+.add-member-header {
     padding: 1.5rem;
     border-bottom: 1px solid #E2E8F0;
     display: flex;
@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.modal-header h2 {
+.add-member-header h2 {
     font-size: 1.25rem;
     margin: 0;
     color: var(--text-main);
@@ -52,11 +52,11 @@
     color: var(--text-main);
 }
 
-.modal-body {
+.add-member-body {
     padding: 1.5rem;
 }
 
-.modal-footer {
+.add-member-footer {
     padding: 1rem 1.5rem;
     background: #F8FAFC;
     border-top: 1px solid #E2E8F0;
